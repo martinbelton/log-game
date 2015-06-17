@@ -32,11 +32,11 @@ gameV[nn_] :=
      If[nn < 
        2917, \[Lambda]@\[LeftFloor](
         nn - 1)/\[CapitalLambda][{j1}, nn]\[RightFloor],
-      If[2917 <= nn <= 3240, (ra@5)[[j1]],
-       If[3241 <= nn <= 3888, (ra@6)[[j1]],
-        If[3889 <= nn <= 4536, (ra@7)[[j1]],
-         If[4537 <= nn <= 5184, (ra@8)[[j1]],
-          If[5185 <= nn <= 5832, (ra@9)[[j1]]]]]]]]},
+      If[2917 <= nn <= 3240, \[CapitalMu][j1, 5],
+       If[3241 <= nn <= 3888, \[CapitalMu][j1, 6],
+        If[3889 <= nn <= 4536, \[CapitalMu][j1, 7],
+         If[4537 <= nn <= 5184, \[CapitalMu][j1, 8],
+          If[5185 <= nn <= 5832, \[CapitalMu][j1, 9]]]]]]]},
    With[{v2 = \[Lambda]@\[LeftFloor](
         nn - 1)/\[CapitalLambda][{j1, v1, j2}, nn]\[RightFloor]}, 
     With[{v3 = \[Lambda]@\[LeftFloor](
