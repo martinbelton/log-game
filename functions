@@ -6,12 +6,10 @@ w[n_, x_] := If[n >= x, "win", n]
  If[EvenQ@Length@# == True, "Vicky", "Jason"] &@\[Kappa][n]
 accT[list_] := Times @@ # & /@ (Take[list, #] & /@ Range@Length@list)
 \[CapitalRho][n_] := RandomInteger[{2, 9}, 1][[1]]
-
 \[Lambda][n_] := If[# < 2, 2, If[# > 9, 9, #]] &@n
 \[CapitalLambda][list_, nn_] := 
  If[Times @@ list*9 < nn, Times @@ list*9, 1]
 \[CapitalMu][a_, b_] := (ra@(a))[[b]]
-
 gameJ[nn_] := 
  With[{j = 324, v1 = \[CapitalRho][n], v2 = \[CapitalRho][n], 
    v3 = \[CapitalRho][n], v4 = 9, j3 = 9, j4 = 9}, 
@@ -26,7 +24,6 @@ gameJ[nn_] :=
      {{\[CapitalKappa]@out}, \[Kappa]@out, 
       Take[{j1, v1, j2, v2, j3, v3}, Length@\[Kappa]@out]}
      ]]]]
-
 gameV[nn_] := 
  With[{j1 = \[CapitalRho][n], j2 = \[CapitalRho][n], 
    j3 = \[CapitalRho][n], j4 = 9, v4 = 9}, With[{v1 =
@@ -48,3 +45,7 @@ gameV[nn_] :=
       {{\[CapitalKappa]@out}, \[Kappa]@out, 
        Take[{j1, v1, j2, v2, j3, v3}, Length@\[Kappa]@out]}
       ]]]]]
+f1[n_] := 9^Floor[n/2]*2^Floor[(n - 1)/2]
+game[n_] := 
+ If[n < 10, {{"Jason"}, {"win"}, {9}}, 
+  If[f1@3 < n <= f1@4 \[Or] f1@5 < n <= f1@6, gameJ[n], gameV[n]]]
