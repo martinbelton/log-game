@@ -1,4 +1,5 @@
-ra[n_] := {1}~Join~(Reverse@Range[2, n]~Join~ConstantArray[2, 9 - n])
+ra[n_] := {\[EmptySquare]}~
+  Join~(Reverse@Range[2, n]~Join~ConstantArray[2, 9 - n])
 w[n_, x_] := If[n >= x, "win", n]
 \[Kappa][n_] := Join[Flatten@Drop[#, -1], {First@Last@#}] &@Split@n
 \[CapitalKappa][n_] := 
@@ -9,7 +10,7 @@ accT[list_] := Times @@ # & /@ (Take[list, #] & /@ Range@Length@list)
 \[Lambda][n_] := If[# < 2, 2, If[# > 9, 9, #]] &@n
 \[CapitalLambda][list_, nn_] := 
  If[Times @@ list*9 < nn, Times @@ list*9, 1]
-\[CapitalMu][a_, b_] := (ra@(b))[[a]]
+\[CapitalMu][a_, b_] := (ra@(a))[[b]]
 
 gameJ[nn_] := 
  With[{j = 324, v1 = \[CapitalRho][n], v2 = \[CapitalRho][n], 
@@ -32,11 +33,11 @@ gameV[nn_] :=
      If[nn < 
        2917, \[Lambda]@\[LeftFloor](
         nn - 1)/\[CapitalLambda][{j1}, nn]\[RightFloor],
-      If[2917 <= nn <= 3240, \[CapitalMu][j1, 5],
-       If[3241 <= nn <= 3888, \[CapitalMu][j1, 6],
-        If[3889 <= nn <= 4536, \[CapitalMu][j1, 7],
-         If[4537 <= nn <= 5184, \[CapitalMu][j1, 8],
-          If[5185 <= nn <= 5832, \[CapitalMu][j1, 9]]]]]]]},
+      If[2917 <= nn <= 3240, \[CapitalMu][5, j1],
+       If[3241 <= nn <= 3888, \[CapitalMu][6, j1],
+        If[3889 <= nn <= 4536, \[CapitalMu][7, j1],
+         If[4537 <= nn <= 5184, \[CapitalMu][8, j1],
+          If[5185 <= nn <= 5832, \[CapitalMu][9, j1]]]]]]]},
    With[{v2 = \[Lambda]@\[LeftFloor](
         nn - 1)/\[CapitalLambda][{j1, v1, j2}, nn]\[RightFloor]}, 
     With[{v3 = \[Lambda]@\[LeftFloor](
